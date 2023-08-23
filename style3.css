@@ -1,0 +1,25 @@
+
+body{
+    width: 50vw;
+    margin: auto;
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    gap:2px;
+}
+
+input{
+    grid-column: 1/5;
+    height: 50px;
+}
+
+button{
+    padding: 10px;
+}
+
+#calculate-btn{
+    grid-column: 3/5;
+}
