@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="/index2.js" defer></script>
+    <script src="./index2.js" defer></script>
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div>
-    <ul>To-Do-List
+
+    <div id="container">
+        <h1>TO-DO-List</h1>
+        <div id ="baby-grid">
+    <ul>
     </ul>
+</div>
     <form>
-    <input type = "text" placeholder = "add a task" required>
-    <button type = "submit">Add Task</button>
+    <input type = "text" placeholder = "add a task" >
+    <button id = "submit" class = "submit" type = "submit">Add Task</button>
+    <button id = "clear "class = "clear">Clear Tasks Above</button>
 </form>
 </div>
 </body>

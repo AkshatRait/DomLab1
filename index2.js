@@ -1,41 +1,36 @@
 const parentList = document.querySelector('ul');
-const submitBtn = document.querySelector('button');
+const submitBtn = document.getElementById('submit');
 const form = document.querySelector('form');
-let taskCompleted = false;
+const clearBtn = document.getElementById('clear');
 let tasks = [];
 
-let newItem;
-const addListItem = ( event) =>{
+const addListItem = (event) => {
     event.preventDefault();
     const inputElement = document.querySelector('input');
-    const inputValue = inputElement.value;
+    const inputValue = inputElement.value.toUpperCase();
 
-    if(inputValue !== ""){
-    newItem = document.createElement('li');
-    newItem.textContent = inputValue;
-    parentList.appendChild(newItem);
-    inputElement.value = "";
-    const completeBtn = document.createElement('button');
-    completeBtn.textContent = "Complete";
-    completeBtn.addEventListener('click', ()=>{
-        alert('Task Completed!');
-        newItem.style.textDecoration = 'line-through';
+    if (inputValue !== "") {
+        const newItem = document.createElement('li');
+        newItem.textContent = inputValue;
+        parentList.appendChild(newItem);
 
-        const index = tasks.indexOf(newItem.textContent)
-        if(index === -1){
-            tasks.push(newItem.textContent);
-            completeBtn.textContent = "Completed"
-            // newItem.remove(completeBtn.button);
-        }
-  
-    });
-     //var hoisting = 
-     newItem.appendChild(completeBtn);
-    }
-    else if(inputValue == ""){
-        return alert("add a task please");
-    }
-}
+        const completeBtn = document.createElement('button');
+        completeBtn.className = 'completed'
+        completeBtn.textContent = "Complete";
+        completeBtn.addEventListener('click', () => {
+            newItem.style.textDecoration = 'line-through';
+
+            const taskText = newItem.textContent.trim(); // Get the text content of the new item
+            const index = tasks.indexOf(taskText);
+            if (index === -1) {
+                tasks.push(taskText);
+                completeBtn.textContent = "Completed";
+            }
+        });
+
+        newItem.appendChild(completeBtn);
+        inputElement.value = "";
+}}
 
 // const div = document.querySelector('div');
 // const seeStoredTasks = document.createElement('ul');
@@ -48,6 +43,4 @@ const addListItem = ( event) =>{
 // }
 
 
-
 submitBtn.addEventListener("click", addListItem);
-
